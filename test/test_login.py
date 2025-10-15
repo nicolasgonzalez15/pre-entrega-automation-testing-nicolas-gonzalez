@@ -87,3 +87,60 @@ def test_login_chrome(chrome_browser):
     #espero 3 segundos
     time.sleep(3)
 
+
+# Login OK - Firefox
+def test_login_firefox(firefox_browser):
+    #redirigo a página demoblaze
+    firefox_browser.get("https://www.saucedemo.com/")
+
+    #espero 3 segundos
+    time.sleep(3)
+
+    #completo login con datos existentes
+    usuario = firefox_browser.find_element(By.ID,'user-name')
+    usuario.send_keys('standard_user')
+
+    clave = firefox_browser.find_element(By.ID,'password')
+    clave.send_keys('secret_sauce')
+
+    #espero 3 segundos
+    time.sleep(3)
+
+    #click en Login
+    firefox_browser.find_element(By.ID,'login-button').click()
+
+    #espero 3 segundos
+    time.sleep(3)
+
+    sitio_web = firefox_browser.current_url
+    assert sitio_web == "https://www.saucedemo.com/inventory.html"
+
+
+# Login OK - Safari
+def test_login_safari(safari_browser):
+    #redirigo a página demoblaze
+    safari_browser.get("https://www.saucedemo.com/")
+
+    #espero 3 segundos
+    time.sleep(3)
+
+    #completo login con datos existentes
+    usuario = safari_browser.find_element(By.ID,'user-name')
+    usuario.send_keys('standard_user')
+
+    clave = safari_browser.find_element(By.ID,'password')
+    clave.send_keys('secret_sauce')
+
+    #espero 3 segundos
+    time.sleep(3)
+
+    #click en Login
+    safari_browser.find_element(By.ID,'login-button').click()
+
+    #espero 3 segundos
+    time.sleep(3)
+
+    sitio_web = safari_browser.current_url
+    assert sitio_web == "https://www.saucedemo.com/inventory.html"
+
+
