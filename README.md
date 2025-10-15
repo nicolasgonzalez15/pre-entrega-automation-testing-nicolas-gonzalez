@@ -31,5 +31,7 @@ Con el fin de ahorrar tiempo y recursos, se quiere automatizar flujos críticos 
   * python3 -m pytest test/ -v
   Para correr un test en particular:
   * python3 -m pytest test/test_login.py -v
+  Para generar reporte html con detalles de todos los casos:
+  * python3 -m pytest --html=reportes/report.html --self-contained-html
  
     
