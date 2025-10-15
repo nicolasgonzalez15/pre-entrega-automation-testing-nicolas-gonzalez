@@ -16,18 +16,15 @@ Con el fin de ahorrar tiempo y recursos, se quiere automatizar flujos críticos 
 ## Estructura de carpetas
 
 - **README.md**
-- **pytest.ini/**
+- **pytest.ini/** (Configuraciones iniciales pytest)
 - **test/**
-    - **login.py**
-    - **conftest.py**
+    - **conftest.py** (Fixtures para diferentes tipos de browsers)
     - **test_login.py**
     - **test_error.py**
     - **test_inventario.py**
     - **test_carrito.py**
-    - **reportes/**
-        - **_index.md**
-        - **configuracion.md**
-        - **uso_basico.md**
+    - **reportes/** 
+        - **report.html**
 
   ## Ejecución de tests
   Para correr todos los tests, utilizar el siguiente comando:
