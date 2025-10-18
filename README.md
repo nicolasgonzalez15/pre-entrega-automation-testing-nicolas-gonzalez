@@ -16,7 +16,7 @@ Con el fin de ahorrar tiempo y recursos, se quiere automatizar flujos críticos 
 ## Estructura de carpetas
 
 - **README.md**
-- **pytest.ini/** (Configuraciones iniciales pytest)
+- **pytest.ini** (Configuraciones iniciales pytest)
 - **test/**
     - **conftest.py** (Fixtures para diferentes tipos de browsers)
     - **test_login.py**
@@ -24,7 +24,7 @@ Con el fin de ahorrar tiempo y recursos, se quiere automatizar flujos críticos 
     - **test_inventario.py**
     - **test_carrito.py**
     - **reportes/** 
-        - **report.html**
+        - **report.html** (Reporte de ejecuciones de tests)
 
   # Ejecución de tests
   ## Para correr todos los tests, utilizar el siguiente comando:
@@ -32,6 +32,6 @@ Con el fin de ahorrar tiempo y recursos, se quiere automatizar flujos críticos 
   ## Para correr un test en particular:
   python3 -m pytest test/test_login.py -v
   ## Para generar reporte html con detalles de todos los casos:
-  * python3 -m pytest --html=reportes/report.html --self-contained-html
+  python3 -m pytest --html=reportes/report.html --self-contained-html
  
     
