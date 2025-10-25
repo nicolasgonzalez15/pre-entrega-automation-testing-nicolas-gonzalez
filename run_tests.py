@@ -8,6 +8,7 @@ test_files = [
     "tests/test_login.py",
     "tests/test_login_error.py",
     "tests/test_inventory.py",
+    "tests/test_filtros.py",
     "tests/test_carrito.py"
 ]
 
