@@ -24,7 +24,8 @@ Con el fin de ahorrar tiempo y recursos, se quiere automatizar flujos críticos 
 - **tests/**
     - **test_login.py** (tests de login exitoso)
     - **test_login_error.py** (tests de login con error - validar mensaje de error)
-    - **test_inventario.py** 
+    - **test_inventario.py**
+    - **test_filtros.py** 
     - **test_carrito.py**
 
   # Ejecución de tests
