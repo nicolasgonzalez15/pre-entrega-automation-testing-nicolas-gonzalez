@@ -13,19 +13,9 @@ from selenium.common.exceptions import WebDriverException
     ("", "secret_sauce","Epic sadface: Username is required"),
     ("xxxxx", "xxxx","Epic sadface: Username and password do not match any user in this service"),
 ])
-def test_login_error(usuario, password,mensaje_error):
+def test_login_error(chrome_browser,usuario, password,mensaje_error):
 
-    # 🔧 Configuración del navegador
-    options = Options()
-    prefs = {
-        "credentials_enable_service": False,
-        "profile.password_manager_enabled": False
-    }
-    options.add_experimental_option("prefs", prefs)
-    options.add_argument("--no-first-run")
-    options.add_argument("--no-default-browser-check")
-
-    driver = webdriver.Chrome(options=options)
+    driver = chrome_browser # Asignamos chrome browser como driver default
     
     try:
         # Abrimos la web

@@ -4,6 +4,30 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import WebDriverException
+from utils import login
+
+# Tests realizados
+#-------------------------------------------------
+
+# 1) Login de cliente default, utilizando como parámetro el login_driver como driver principal
+
+def test_login_validacion(login_driver):
+
+    try: 
+        
+        driver = login_driver # Devolvemos driver asignando el fixture creado, reutilizar en otras pruebas
+
+        assert '/inventory.html' in driver.current_url, "No se redirigió al inventario."
+
+    except Exception as e:
+        print(f"Error: {e}")
+        raise
+
+    finally:
+        driver.quit()
+
+# 2) Login de cliente parametrizado, utilizando como parámetro el chrome_driver como driver principal
+# Y utilizando un parametrize, con varios tipos de usuarios y contraseñas para poder loguearse
 
 # 🔹 Lista de usuarios y contraseñas a probar
 @pytest.mark.parametrize("usuario,password", [
@@ -12,24 +36,16 @@ from selenium.common.exceptions import WebDriverException
     ("problem_user", "secret_sauce"),
     ("performance_glitch_user", "secret_sauce"),
 ])
-def test_login(usuario, password):
+
+def test_login_parametrizado(chrome_browser,usuario,password):
     """
     Prueba parametrizada para login en https://www.saucedemo.com/
     Valida que los usuarios con credenciales correctas entren al inventario
     y los bloqueados no.
     """
 
-    # 🔧 Configuración del navegador
-    options = Options()
-    prefs = {
-        "credentials_enable_service": False,
-        "profile.password_manager_enabled": False
-    }
-    options.add_experimental_option("prefs", prefs)
-    options.add_argument("--no-first-run")
-    options.add_argument("--no-default-browser-check")
-
-    driver = webdriver.Chrome(options=options)
+    driver = chrome_browser
+    #driver = webdriver.Chrome(options=options) # Vinculo al driver de chrome previamente generado
 
     try:
         # Abrimos la web
@@ -63,31 +79,7 @@ def test_login(usuario, password):
         driver.quit()
 
 
-# Login OK - Chrome como browser
-def test_login_chrome(chrome_browser):
-    #redirigo a página demoblaze
-    chrome_browser.get("https://www.saucedemo.com/")
-
-    #espero 3 segundos
-    time.sleep(3)
-
-    #completo login con datos existentes
-    usuario = chrome_browser.find_element(By.ID,'user-name')
-    usuario.send_keys('standard_user')
-
-    clave = chrome_browser.find_element(By.ID,'password')
-    clave.send_keys('secret_sauce')
-
-    #espero 3 segundos
-    time.sleep(3)
-
-    #click en Login
-    chrome_browser.find_element(By.ID,'login-button').click()
-
-    #espero 3 segundos
-    time.sleep(3)
-
-
+# 3) Login exitoso con driver de Firefox
 # Login OK - Firefox
 def test_login_firefox(firefox_browser):
     #redirigo a página demoblaze
@@ -116,6 +108,7 @@ def test_login_firefox(firefox_browser):
     assert sitio_web == "https://www.saucedemo.com/inventory.html"
 
 
+# 4) Login exitoso con driver de Safari
 # Login OK - Safari
 def test_login_safari(safari_browser):
     #redirigo a página demoblaze
@@ -142,5 +135,4 @@ def test_login_safari(safari_browser):
 
     sitio_web = safari_browser.current_url
     assert sitio_web == "https://www.saucedemo.com/inventory.html"
-
 
