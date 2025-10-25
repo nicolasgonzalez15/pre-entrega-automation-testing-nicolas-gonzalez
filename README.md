@@ -17,21 +17,22 @@ Con el fin de ahorrar tiempo y recursos, se quiere automatizar flujos críticos 
 
 - **README.md**
 - **pytest.ini** (Configuraciones iniciales pytest)
-- **test/**
-    - **conftest.py** (Fixtures para diferentes tipos de browsers)
-    - **test_login.py**
-    - **test_error.py**
-    - **test_inventario.py**
+- **conftest.py** (Fixtures para diferentes tipos de browsers / prueba de Login reutilizable)
+- **utils.py** (Archivo con funciones reutilizables - login reutilizable)
+- **reports/** 
+  - **report.html** (Reporte de ejecuciones de tests unitarios con pytest-html)
+- **tests/**
+    - **test_login.py** (tests de login exitoso)
+    - **test_login_error.py** (tests de login con error - validar mensaje de error)
+    - **test_inventario.py** 
     - **test_carrito.py**
-    - **reportes/** 
-        - **report.html** (Reporte de ejecuciones de tests)
 
   # Ejecución de tests
   ## Para correr todos los tests, utilizar el siguiente comando:
-  python3 -m pytest test/ -v
+  python3 -m pytest tests/ -v
   ## Para correr un test en particular:
-  python3 -m pytest test/test_login.py -v
+  python3 -m pytest tests/test_login.py -v
   ## Para generar reporte html con detalles de todos los casos:
-  python3 -m pytest --html=reportes/report.html --self-contained-html
+  python3 -m pytest --html=reports/report.html --self-contained-html
  
     
